@@ -100,7 +100,7 @@ useEffect(()=>{
         <body class="h-full">
         
       */}
-      <div>
+      <div className="bg-gray-800 py-10">
         <Dialog open={sidebarOpen} onClose={setSidebarOpen} className="relative z-50 lg:hidden">
           <DialogBackdrop
             transition
@@ -260,7 +260,7 @@ useEffect(()=>{
           </div>
         </div>
 
-        <div className="lg:pl-72">
+        <div className="lg:pl-72 ">
           <div className="sticky top-0 z-40 flex h-16 shrink-0 items-center gap-x-4 border-b border-gray-200 bg-white px-4 shadow-sm sm:gap-x-6 sm:px-6 lg:px-8">
             <button type="button" onClick={() => setSidebarOpen(true)} className="-m-2.5 p-2.5 text-gray-700 lg:hidden">
               <span className="sr-only">Open sidebar</span>
@@ -270,7 +270,7 @@ useEffect(()=>{
             {/* Separator */}
             <div aria-hidden="true" className="h-6 w-px bg-gray-900/10 lg:hidden" />
 
-            <div className="flex flex-1 gap-x-4 self-stretch lg:gap-x-6">
+            <div className="flex flex-1 gap-x-4 self-stretch lg:gap-x-6 ">
               <form action="#" method="GET" className="relative flex flex-1">
                 <label htmlFor="search-field" className="sr-only">
                   Search
@@ -332,7 +332,7 @@ useEffect(()=>{
             </div>
           </div>
 
-          <main className="bg-gray-800 py-10">
+          <main>
             <div className="px-4 sm:px-6 lg:px-8">
               {<AddComment setRefreshKey={setRefreshKey}/>}
                 {<DataTable data = {data} setDeleted = {setDeleted}/>}

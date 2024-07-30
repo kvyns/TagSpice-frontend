@@ -39,11 +39,11 @@ function AddComment({setRefreshKey}) {
   };
 
   return (
-    <div>
+    <div className='mt-4'>
       <form onSubmit={handleSubmit}>
         <label className='align-middle' >
           <textarea
-            className='rounded-md px-2 p-4'
+            className='rounded-md px-2 p-2'
             type="text"
             cols={50}
             rows={1}
@@ -54,7 +54,7 @@ function AddComment({setRefreshKey}) {
             onChange={(e) => setComment(e.target.value)}
           />
         </label>
-        <button className = "rounded-md bg-blue-500 hover:bg-blue-600 text-white mx-5 p-4" type="submit">Submit</button>
+        <button className = "rounded-md bg-blue-500 hover:bg-blue-600 text-white mx-5 p-2" type="submit">Submit</button>
       </form>
     </div>
   );

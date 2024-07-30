@@ -4,6 +4,7 @@ import{
     BarsArrowDownIcon
 }
 from '@heroicons/react/24/outline'
+import TableElement from "./TableElement";
 
 function DataTable({data, setDeleted}) {
   const [search, setSearch] = useState("");
@@ -52,9 +53,10 @@ function DataTable({data, setDeleted}) {
     })
   }
 
+
   useEffect(() => {
     const newArr = data.data.filter(
-      (data) => (data.commentBody.toLowerCase().includes(search) || data._id.toLowerCase().includes(search))
+      (data) => (data.commentBody.toLowerCase().includes(search) || data.tags.toString().toLowerCase().includes(search))
       // (data)=>(console.log(data))
 
     );
@@ -63,7 +65,7 @@ function DataTable({data, setDeleted}) {
 
   return (
     <div>
-      <label className="flex justify-start pt-3">
+      <label className="flex justify-start">
         <input
           className="bg-white rounded-md p-2 text-xs"
           placeholder="Search the store"
@@ -72,7 +74,7 @@ function DataTable({data, setDeleted}) {
         />
       </label>
 
-      <table className="p-2 my-5 text-sm table-auto text-white">
+      <table className="p-2 mt-2 text-sm text-white">
         <thead>
           <tr className="rounded-md flex space-x-5 bg-slate-500 p-2 text-center">
             <th className="flex flex-row justify-center content-center w-60">
@@ -92,20 +94,9 @@ function DataTable({data, setDeleted}) {
             </th>
           </tr>
         </thead>
-        <tbody className="divide-y-2">
+        <tbody>
           {filterData.map((entry) => (
-            <tr
-              key={entry._id}
-              className="flex space-x-5  mt-2 p-2 text-center"
-            >
-              <td className="w-60">{entry.tags}</td>
-              <td className="w-60">{entry.commentBody}</td>
-              <td className="w-10"><button className="rounded-md bg-blue-500 hover:bg-blue-600 text-white p-2">Edit</button></td>
-              <td className="w-10"><button 
-              className="rounded-md bg-red-500 hover:bg-red-600 text-white p-2"
-              onClick={()=>deleteComment(entry._id)}
-              >Delete</button ></td>
-            </tr>
+            <TableElement key = {entry._id} data = {entry} deleteComment={deleteComment}/>
           ))}
         </tbody>
       </table>

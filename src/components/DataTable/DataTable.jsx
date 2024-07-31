@@ -105,33 +105,9 @@ function DataTable({data, setDeleted}) {
           onChange={(e) => setSearch(e.target.value)}
         />
       </label>
-
-      <table className="p-2 mt-2 text-sm text-white">
-        <thead>
-          <tr className="rounded-md flex space-x-5 bg-slate-500 p-2 text-center">
-            <th className="flex flex-row justify-center content-center w-60">
-              <span>Tags</span>
-              <button className="text-white ml-2 mt-1.5" onClick={() => handleSort('tags')}>
-                {sort ? <BarsArrowDownIcon className="h-4 w-4"/> : <BarsArrowUpIcon className="h-4 w-4"/>}
-              </button>
-            </th>
-            <th className="flex flex-row justify-center content-center w-60">
-              Comments
-              <button className="text-white ml-2 mt-1.5" onClick={() => handleSort('commentBody')}>
-              {sort ? <BarsArrowDownIcon className="h-4 w-4"/> : <BarsArrowUpIcon className="h-4 w-4"/>}
-              </button>
-            </th>
-            <th className="flex flex-row justify-center content-center w-40">
-              Actions
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {filterData.map((entry) => (
+      {filterData.map((entry) => (
             <TableElement key = {entry._id} data = {entry} deleteComment={deleteComment} updateComment={updateComment}/>
           ))}
-        </tbody>
-      </table>
     </div>
   );
 }

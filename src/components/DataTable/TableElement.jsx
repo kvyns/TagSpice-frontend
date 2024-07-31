@@ -19,9 +19,13 @@ function TableElement({ data, deleteComment, updateComment}) {
             </div>
             <div className="flex space-x-2">
               <button 
-              onClick={()=>(setEditable((prev)=>(!prev)))}
-              onChange = {(e)=>setEditedComment(e.target.value)}
-              className="rounded-md bg-blue-500 hover:bg-blue-600 text-xs text-white p-2">Edit</button>
+              onClick={()=>{
+                if(editable){
+                    updateComment(entry._id, editedComment)
+                }
+
+                setEditable((prev)=>(!prev))}}
+              className="rounded-md bg-blue-500 hover:bg-blue-600 text-xs text-white p-2">{editable? "Save" : "Edit"}</button>
               <button 
                 className="rounded-md bg-red-500 hover:bg-red-600 text-xs text-white p-2"
                 onClick={() => deleteComment(entry._id)}
@@ -33,9 +37,10 @@ function TableElement({ data, deleteComment, updateComment}) {
           <div className='bg-gray-900 rounded-md m-2 p-2'>
             <label>
                 <input 
-                disabled = {editable}
-                className = "bg-gray-900"
-                value = {entry.commentBody}/>
+                className = "bg-gray-900 w-full"
+                disabled = {!editable}
+                onChange = {(e)=>setEditedComment(e.target.value)}
+                value = {editedComment}/>
             </label>
           </div>
         </div>

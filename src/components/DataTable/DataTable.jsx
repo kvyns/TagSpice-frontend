@@ -53,6 +53,38 @@ function DataTable({data, setDeleted}) {
     })
   }
 
+  const updateComment = (commentID, updatedComment)=>{
+    fetch(`https://tag-spice-backend-hz2vfqdjq-tuhinanshu-modgils-projects.vercel.app/comment/edit-comment/${commentID}`, {
+      method: "PUT",
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        commentBody: updatedComment
+      })
+
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const contentType = response.headers.get("content-type");
+        if (contentType && contentType.indexOf("application/json") !== -1) {
+          return response.json();
+        } else {
+          return response.text();
+        }
+      })
+      .then(data => {
+        console.log('Comment updated:', data);
+        // setRefreshKey((prev) => (prev+1)
+        // )
+      })
+      .catch(error => {
+        console.error('Error updating comment:', error);
+      });
+  }
 
   useEffect(() => {
     const newArr = data.data.filter(
@@ -96,7 +128,7 @@ function DataTable({data, setDeleted}) {
         </thead>
         <tbody>
           {filterData.map((entry) => (
-            <TableElement key = {entry._id} data = {entry} deleteComment={deleteComment}/>
+            <TableElement key = {entry._id} data = {entry} deleteComment={deleteComment} updateComment={updateComment}/>
           ))}
         </tbody>
       </table>

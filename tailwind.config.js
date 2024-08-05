@@ -10,10 +10,12 @@ export default {
         'bg': '#131418',
         'card-bg' : '#1c1e2a'
       },
-      boxShadow: {
-        '2xl-white': '0 25px 50px 0px rgba(255, 255, 255, 0.25)',
-    },
   },
 }, 
+safelist: [
+  'bg-red-800', 'outline-red-600',
+  'bg-green-800', 'outline-green-600',
+  'bg-yellow-800', 'outline-yellow-600',
+],
   plugins: ['@tailwindcss/forms'],
 }

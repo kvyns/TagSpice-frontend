@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { PencilIcon, TrashIcon } from "@heroicons/react/24/outline";
+import colorConstants from './colorConstants.json'
 
 function TableElement({ data, deleteComment, updateComment }) {
   const [editable, setEditable] = useState(false);
@@ -55,12 +56,7 @@ function TableElement({ data, deleteComment, updateComment }) {
             {entry.tags.map((tag, index) => (
               <div
                 key={index}
-                className={
-                  tag === "negative"
-                    ? "bg-red-800 outline outline-red-600 rounded-full px-2 py-1 w-min text-xs text-white text-center"
-                    : tag === "positive"
-                    ? "bg-green-800 outline outline-green-600  rounded-full px-2 py-1 w-min text-xs text-white text-center"
-                    : "bg-red-800 outline outline-red-600 rounded-full px-2 py-1 w-min text-xs text-white text-center"
+                className={`bg-${colorConstants[tag] || colorConstants['default']}-800 outline outline-${colorConstants[tag] || colorConstants['default']}-600 rounded-full px-2 py-1 w-min text-xs text-white text-center`
                 }
               >
                 #{tag}

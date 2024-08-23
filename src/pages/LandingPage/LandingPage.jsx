@@ -1,9 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import Header from '../../components/Header/Header'
+import { useSelector } from 'react-redux'
 
 function LandingPage() {
-  const login = false
+  
   const links = [
     { name: 'Submit comments', href: '#' },
     { name: 'View Analysis Results', href: '#' },
@@ -16,13 +17,16 @@ function LandingPage() {
     { name: 'Users Served', value: '40+' },
     { name: 'Accuracy Rate', value: '95%' },
   ]
-
+  const user = useSelector(state => state.userData)
+  const login = user.success
   return (
     <div className='h-full'>
       {login ? (
         <div>
+        <div>
         <Header />
-        User is successfully Logged in</div>
+        </div>
+        <div>User is successfully Logged in</div></div>
       ) : (
         <div className="relative isolate overflow-hidden py-24 sm:py-32 max-h-screen">
           <Header />

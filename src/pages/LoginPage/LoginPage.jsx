@@ -1,5 +1,7 @@
 import { useState } from "react"
+import { useDispatch } from "react-redux";
 import { useNavigate, Link } from "react-router-dom"
+import { loginUser } from "../../feature/login/loginSlice";
 
 /*
   This example requires some changes to your config:
@@ -20,6 +22,7 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
   const [wrongPass, setWrongPass] = useState(false);
   const navigate = useNavigate();
+  const dispatch = useDispatch()
 
   const loginHandler = (e) => {
     e.preventDefault();
@@ -37,6 +40,7 @@ export default function LoginPage() {
       .then(response => response.json())
       .then(response => {
         if (response.success) {
+          dispatch(loginUser(response))
           navigate("/");
         } else {
           setWrongPass(true);

@@ -2,7 +2,8 @@ import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuIt
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { loginUser } from '../../feature/login/loginSlice'
+import { logoutUser } from '../../feature/login/loginSlice'
+
 
 const navigation = [
   { name: 'Dashboard', href: '#', current: true },
@@ -23,8 +24,7 @@ export default function Header() {
     const dispatch = useDispatch()
 
     const handleLogout = ()=>{
-      // navigate("/")
-      dispatch(loginUser({}))
+      dispatch(logoutUser())
     }
   return (
     <>

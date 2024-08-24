@@ -2,6 +2,7 @@ import { useState } from "react"
 import { useDispatch } from "react-redux";
 import { useNavigate, Link } from "react-router-dom"
 import { loginUser } from "../../feature/login/loginSlice";
+import Cookies from "js-cookie";
 
 /*
   This example requires some changes to your config:
@@ -41,6 +42,7 @@ export default function LoginPage() {
       .then(response => {
         if (response.success) {
           dispatch(loginUser(response))
+          Cookies.set('tagspice', JSON.stringify(response))
           navigate("/");
         } else {
           setWrongPass(true);

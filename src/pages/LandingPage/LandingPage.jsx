@@ -17,18 +17,89 @@ function LandingPage() {
     { name: 'Users Served', value: '40+' },
     { name: 'Accuracy Rate', value: '95%' },
   ]
+
+  const commentContainers = [
+    {
+      title:"Youtube",
+      count: "5000"
+    },
+    {
+      title:"Flipkart",
+      count: "98"
+    },
+    {
+      title:"Instagram",
+      count: "6000"
+    },
+    {
+      title:"Amazon",
+      count: "200"
+    },
+    {
+      title:"Amazon",
+      count: "200"
+    },
+    {
+      title:"Amazon",
+      count: "200"
+    },
+    {
+      title:"Amazon",
+      count: "200"
+    },
+    {
+      title:"Amazon",
+      count: "200"
+    },
+    {
+      title:"Amazon",
+      count: "200"
+    },
+    {
+      title:"Amazon",
+      count: "200"
+    },
+    {
+      title:"Amazon",
+      count: "200"
+    },
+    {
+      title:"Amazon",
+      count: "200"
+    },
+    {
+      title:"Amazon",
+      count: "200"
+    },
+    {
+      title:"Amazon",
+      count: "200"
+    }
+  ]
   const user = useSelector(state => state.userData)
-  // const login = user.success
-  const login = true 
+  const login = user.success
+  // const login = true 
   return (
     <div className='h-full'>
       {login ? (
-        <div>
+        <div className='flex flex-col'>
           <div className=''>
             <Header />
           </div>
-          <div className=''>
-            User is successfully Logged in
+          <div className="mt-16 max-w-5xl flex flex-col items-center w-full self-center">
+            <div className="font-bold text-white bg-indigo-600 text-center w-full p-1  hover:text-indigo-600  hover:bg-white duration-300">
+              Login Success</div>
+
+              <div className='w-full'>
+                <div className='m-2 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4'>
+                  {commentContainers.map(container=>(
+                    <div className='p-2 odd:bg-indigo-500 even:bg-indigo-800 text-white rounded-md w-full h-48 '>
+                    <div className='font-bold text-xl w-full'>{container.title}</div>
+                    <div className='text-s w-full'>{container.count} comments</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
           </div>
         </div>
       ) : (

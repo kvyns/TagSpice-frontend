@@ -18,15 +18,19 @@ function LandingPage() {
     { name: 'Accuracy Rate', value: '95%' },
   ]
   const user = useSelector(state => state.userData)
-  const login = user.success
+  // const login = user.success
+  const login = true 
   return (
     <div className='h-full'>
       {login ? (
         <div>
-        <div>
-        <Header />
+          <div className=''>
+            <Header />
+          </div>
+          <div className=''>
+            User is successfully Logged in
+          </div>
         </div>
-        <div>User is successfully Logged in</div></div>
       ) : (
         <div className="relative isolate overflow-hidden py-24 sm:py-32 max-h-screen">
           <Header />

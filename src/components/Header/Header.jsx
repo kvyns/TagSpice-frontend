@@ -17,7 +17,7 @@ export default function Header() {
     const navigate = useNavigate()
   return (
     <>
-        <div className='absolute  bg-opacity-50 min-w-full top-0'>
+        <div className='absolute bg-opacity-50 min-w-full top-0'>
             <div className='mx-auto max-w-7xl'>
                 <div className='flex flex-row justify-between p-2 gap-3 items-center'>
                     <div className='text-indigo-600 font-bold text-xl'>

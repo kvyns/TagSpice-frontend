@@ -43,7 +43,7 @@ export default function LoginPage() {
         if (response.success) {
           dispatch(loginUser(response))
           Cookies.set('tagspice', JSON.stringify(response))
-          navigate("/");
+          navigate("/dashboard");
         } else {
           setWrongPass(true);
         }

@@ -25,20 +25,21 @@ export default function Header() {
 
     const handleLogout = ()=>{
       dispatch(logoutUser())
+      navigate("/")
     }
   return (
     <>
-        <div className='absolute bg-opacity-50 min-w-full top-0'>
+        <div className='fixed min-w-full top-0 bg-white border-b-4 border-neutral-600l'>
             <div className='mx-auto max-w-7xl'>
-                <div className='flex flex-row justify-between p-2 gap-3 items-center'>
+                <div className='flex flex-row justify-between p-4 gap-3 items-center'>
                     <div className='text-indigo-600 font-bold text-xl'>
-                        TagSpice
+                        <Link to = "/">Tagspice</Link>
                     </div>
                     {login? <div>
                         <button className='mx-3 rounded-md bg-indigo-600 hover:bg-indigo-500 duration-300 text-white p-2 w-20 text-center'
                         onClick={handleLogout}>Log out</button>
-                        <button className='rounded-full border-2 box border-indigo-600 hover:bg-indigo-600 hover:text-white duration-300 text-indigo-600 p-2 text-center'
-                        onClick={()=>console.log(user)}>pfp</button>
+                        <button className='border-indigo-600 group text-indigo-600 p-2 text-center'
+                        onClick={()=>console.log(user)}>{user.data.username}<div className="bg-indigo-600 h-[2px] w-0 group-hover:w-full transition-all duration-200"></div></button>
                     </div> :
                     <div>
                         <button className='mx-3 rounded-md bg-indigo-600 hover:bg-indigo-500 text-white duration-300 p-2 w-20 text-center'

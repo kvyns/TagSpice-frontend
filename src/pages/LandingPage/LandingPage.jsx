@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux'
 function LandingPage() {
   
   const links = [
-    { name: 'Submit comments', href: '#' },
+    { name: 'Dashboard', href: '/dashboard' },
     { name: 'View Analysis Results', href: '#' },
     { name: 'Learn about tools', href: '#' },
     { name: 'Contact support', href: '#' },
@@ -81,29 +81,7 @@ function LandingPage() {
   // const login = true 
   return (
     <div className='h-full'>
-      {login ? (
-        <div className='flex flex-col'>
-          <div className=''>
-            <Header />
-          </div>
-          <div className="mt-16 max-w-5xl flex flex-col items-center w-full self-center">
-            <div className="font-bold text-white bg-indigo-600 text-center w-full p-1  hover:text-indigo-600  hover:bg-white duration-300">
-              Login Success</div>
-
-              <div className='w-full'>
-                <div className='m-2 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4'>
-                  {commentContainers.map(container=>(
-                    <div className='p-2 odd:bg-indigo-500 even:bg-indigo-800 text-white rounded-md w-full h-48 '>
-                    <div className='font-bold text-xl w-full'>{container.title}</div>
-                    <div className='text-s w-full'>{container.count} comments</div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-          </div>
-        </div>
-      ) : (
-        <div className="relative isolate overflow-hidden py-24 sm:py-32 max-h-screen">
+        <div className="relative isolate overflow-hidden py-24 sm:py-32 ">
           <Header />
           <div
             aria-hidden="true"
@@ -139,8 +117,9 @@ function LandingPage() {
             <div className="mx-auto mt-10 max-w-2xl lg:mx-0 lg:max-w-none">
               <div className="grid grid-cols-1 gap-x-8 gap-y-6 text-base font-semibold leading-7 text-indigo-600 sm:grid-cols-2 md:flex lg:gap-x-10">
                 {links.map((link) => (
-                  <a key={link.name} href={link.href}>
+                  <a className="group" key={link.name} href={link.href}>
                     {link.name} <span aria-hidden="true">&rarr;</span>
+                    <div className="bg-indigo-600 h-[2px] w-0 group-hover:w-full transition-all duration-500"></div>
                   </a>
                 ))}
               </div>
@@ -155,7 +134,6 @@ function LandingPage() {
             </div>
           </div>
         </div>
-      )}
     </div>
   )
 }

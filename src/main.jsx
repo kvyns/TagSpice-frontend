@@ -8,7 +8,8 @@ import LoginPage from './pages/LoginPage/LoginPage.jsx'
 import LandingPage from './pages/LandingPage/LandingPage.jsx'
 import SignupPage from './pages/SignupPage/SignupPage.jsx'
 import { Provider } from 'react-redux'
-import {store } from './app/store.js'
+import { store } from './app/store.js'
+import Dashboard from './pages/Dashboard/Dashboard.jsx'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -16,6 +17,7 @@ const router = createBrowserRouter(
       <Route path = "" element = {<LandingPage/>}/>
       <Route path = "signin" element = {<LoginPage/>}/>
       <Route path = "signup" element = {<SignupPage/>}/>
+      <Route path = "dashboard" element = {<Dashboard/>}/>
     </Route>
   )
 )
